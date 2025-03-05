@@ -1,5 +1,4 @@
 
-import { SplashCursor } from "@/components/SplashCursor";
 import { PageTransition } from "@/components/PageTransition";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
@@ -9,13 +8,6 @@ const Index = () => {
   return (
     <PageTransition>
       <div className="relative min-h-screen w-full flex flex-col items-center justify-center px-6 py-24 md:py-32">
-        <SplashCursor 
-          DENSITY_DISSIPATION={4}
-          SPLAT_RADIUS={0.2} 
-          CURL={30}
-          COLOR_UPDATE_SPEED={15}
-        />
-        
         <div className="container max-w-5xl z-10">
           <div className="flex flex-col items-center text-center space-y-6">
             <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tighter animate-enter">

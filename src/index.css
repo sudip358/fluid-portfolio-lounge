@@ -94,4 +94,15 @@
   .container-padding {
     @apply py-8 px-6 md:px-12 lg:px-24;
   }
+  
+  .animate-enter {
+    @apply opacity-0 translate-y-4;
+    animation: enter 0.7s ease forwards;
+  }
+  
+  @keyframes enter {
+    to {
+      @apply opacity-100 translate-y-0;
+    }
+  }
 }
