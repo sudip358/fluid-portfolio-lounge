@@ -170,6 +170,49 @@ const CV = () => {
                   <li>• Improved technical SEO across all company websites, resulting in 20% better performance</li>
                 </ul>
               </div>
+
+              <div className="neo-blur p-6 rounded-xl">
+                <div className="flex flex-wrap justify-between mb-2">
+                  <h3 className="font-medium">Senior SEO Manager</h3>
+                  <p className="text-sm text-muted-foreground">12/2016 - 12/2017 · 1 yr 1 mo</p>
+                </div>
+                <p className="text-sm text-muted-foreground mb-2">Pearl Like Technology, India</p>
+                <ul className="space-y-1 text-sm">
+                  <li>• Implemented on-page and off-page SEO strategies, resulting in a 25% increase in organic search traffic</li>
+                  <li>• Conducted keyword research, competitor analysis, and website audits to identify optimization opportunities</li>
+                  <li>• Optimized website content, meta tags, and headings for improved organic visibility and user experience</li>
+                  <li>• Monitored and reported on key SEO metrics, providing regular performance updates to clients</li>
+                  <li>• Collaborated with development teams to implement technical SEO recommendations</li>
+                  <li>• Executed link-building campaigns to enhance website authority and increase organic rankings</li>
+                </ul>
+              </div>
+
+              <div className="neo-blur p-6 rounded-xl">
+                <div className="flex flex-wrap justify-between mb-2">
+                  <h3 className="font-medium">Jr Search Engine Optimization Expert</h3>
+                  <p className="text-sm text-muted-foreground">02/2015 - 12/2016 · 1 yr 11 mos</p>
+                </div>
+                <p className="text-sm text-muted-foreground mb-2">Pearl Like Technology, Indore, Madhya Pradesh, India</p>
+                <ul className="space-y-1 text-sm">
+                  <li>• Specialized in outreach services, healthcare, e-commerce, and backlink building</li>
+                  <li>• Assisted in keyword research and on-page optimization for various client websites</li>
+                  <li>• Contributed to content optimization strategies to improve search engine rankings</li>
+                </ul>
+              </div>
+
+              <div className="neo-blur p-6 rounded-xl">
+                <div className="flex flex-wrap justify-between mb-2">
+                  <h3 className="font-medium">Assistant Search Engine Optimization Manager</h3>
+                  <p className="text-sm text-muted-foreground">08/2013 - 01/2015 · 1 yr 6 mos</p>
+                </div>
+                <p className="text-sm text-muted-foreground mb-2">Ebuzznet, India</p>
+                <ul className="space-y-1 text-sm">
+                  <li>• Conducted keyword research to guide content teams</li>
+                  <li>• Prepared content briefs and coached content teams on creating SEO-optimized content</li>
+                  <li>• Kept pace with SEO, search engine, social media, and internet marketing industry trends</li>
+                  <li>• Gained expertise in XML Sitemaps and technical SEO fundamentals</li>
+                </ul>
+              </div>
             </div>
           </div>
         </div>
