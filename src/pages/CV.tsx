@@ -25,7 +25,7 @@ const CV = () => {
                 <a href="#contact">Get in Touch</a>
               </Button>
               <Button asChild size="lg" variant="outline" className="rounded-full group px-6">
-                <a href="#" className="flex items-center gap-2">
+                <a href="/Sudiip-Kumr-Resume-Accenture.pdf" className="flex items-center gap-2">
                   Download CV 
                   <Download className="h-4 w-4 transition-transform group-hover:translate-y-1" />
                 </a>
