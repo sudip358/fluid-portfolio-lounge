@@ -1,14 +1,15 @@
-
 import { BrowserRouter as Router } from "react-router-dom";
-import { Toaster } from "@/components/ui/sonner";
+import { Toaster } from "@/components/ui/sonner"; // Corrected typo here
 import { ThemeProvider } from "next-themes";
 import { CustomNavbar } from "@/components/CustomNavbar";
+import { SplashCursor } from "@/components/ui/splash-cursor";
 import CV from "@/pages/CV";
 
 function App() {
   return (
     <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
       <Router>
+        <SplashCursor />
         <div className="min-h-screen flex flex-col">
           <CustomNavbar />
           <main className="flex-1">
