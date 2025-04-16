@@ -92,6 +92,24 @@ const Projects = () => {
       tags: ["SEO", "PR", "Link Building"],
       imageUrl: "https://placehold.co/600x400/f5f5f5/cccccc?text=PR+Links",
     },
+    {
+      title: "Programmatic SEO",
+      description: "Leveraging automation and data to scale SEO efforts across large websites.",
+      tags: ["SEO", "Programmatic", "Automation"],
+      imageUrl: "https://placehold.co/600x400/f5f5f5/cccccc?text=Programmatic+SEO",
+    },
+    {
+      title: "Shopify SEO",
+      description: "Optimizing Shopify stores for search engines to drive organic traffic and sales.",
+      tags: ["SEO", "Shopify", "E-commerce"],
+      imageUrl: "https://placehold.co/600x400/f5f5f5/cccccc?text=Shopify+SEO",
+    },
+    {
+      title: "B2B SEO",
+      description: "Developing SEO strategies tailored for B2B companies to attract qualified leads.",
+      tags: ["SEO", "B2B", "Lead Generation"],
+      imageUrl: "https://placehold.co/600x400/f5f5f5/cccccc?text=B2B+SEO",
+    },
   ];
 
   return (
