@@ -4,9 +4,137 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Download, Mail, Phone, MapPin, Linkedin, Send, ArrowRight, ExternalLink, Github } from "lucide-react";
+import { Download, Mail, Phone, MapPin, Linkedin, Send, ArrowRight, ExternalLink, Github } from "lucide-react"; // Ignoring errors for this import as requested
+import React from "react"; // Import React for useRef
+import Autoplay from "embla-carousel-autoplay";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel"; // Assuming this path is correct
+
+// Define ProjectCard component locally within CV.tsx
+const ProjectCard = ({
+  title,
+  description,
+  tags,
+  imageUrl = "https://placehold.co/600x400/f5f5f5/cccccc",
+  liveUrl = "#",
+  githubUrl = "#"
+}) => {
+  return (
+    // Added h-full for consistent height within carousel item
+    <div className="neo-blur rounded-xl overflow-hidden transition-all duration-300 hover-scale h-full flex flex-col">
+      <div className="h-48 md:h-56 overflow-hidden">
+        <img
+          src={imageUrl}
+          alt={title}
+          className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
+        />
+      </div>
+      {/* Added flex-grow to push buttons to the bottom */}
+      <div className="p-6 flex flex-col flex-grow">
+        <h3 className="text-xl font-semibold mb-2">{title}</h3>
+        <p className="text-muted-foreground text-sm mb-4">{description}</p>
+
+        <div className="flex flex-wrap gap-2 mb-6">
+          {tags.map((tag, index) => (
+            <span
+              key={index}
+              className="text-xs px-2 py-1 rounded-full bg-primary/10 text-primary-foreground"
+            >
+              {tag}
+            </span>
+          ))}
+        </div>
+
+        {/* Added mt-auto to push buttons down */}
+        <div className="flex gap-3 mt-auto">
+          <Button size="sm" variant="outline" asChild>
+            <a href={liveUrl} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1">
+              <ExternalLink className="h-3.5 w-3.5" />
+              Live Demo
+            </a>
+          </Button>
+          <Button size="sm" variant="outline" asChild>
+            <a href={githubUrl} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1">
+              <Github className="h-3.5 w-3.5" />
+              Code
+            </a>
+          </Button>
+        </div>
+      </div>
+    </div>
+  );
+};
+
 
 const CV = () => {
+  // Initialize Autoplay plugin
+  const plugin = React.useRef(
+    Autoplay({ delay: 1500, stopOnInteraction: true })
+  );
+
+  // Define projects data locally
+  const projects = [
+    {
+      title: "E-commerce SEO Optimization",
+      description: "Complete SEO strategy and implementation for a health essentials e-commerce platform.",
+      tags: ["SEO", "E-commerce", "Content Strategy"],
+      imageUrl: "https://placehold.co/600x400/f5f5f5/cccccc?text=E-commerce+SEO",
+    },
+    {
+      title: "Casino Site Ranking System",
+      description: "Developed a comprehensive ranking system and link building strategy for a gaming platform.",
+      tags: ["SEO", "Casino", "Link Building"],
+      imageUrl: "https://placehold.co/600x400/f5f5f5/cccccc?text=Casino+SEO",
+    },
+    {
+      title: "CBD Product Platform",
+      description: "Technical SEO and content optimization for a CBD product company.",
+      tags: ["SEO", "CBD", "Technical SEO"],
+      imageUrl: "https://placehold.co/600x400/f5f5f5/cccccc?text=CBD+SEO",
+    },
+    {
+      title: "Essential Oils Website",
+      description: "Complete SEO audit and strategy implementation for an essential oils company.",
+      tags: ["SEO", "Health", "Content Marketing"],
+      imageUrl: "https://placehold.co/600x400/f5f5f5/cccccc?text=Essential+Oils",
+    },
+    {
+      title: "Mental Health Platform",
+      description: "SEO and content strategy for a mental health resources website.",
+      tags: ["SEO", "Mental Health", "Content"],
+      imageUrl: "https://placehold.co/600x400/f5f5f5/cccccc?text=Mental+Health",
+    },
+    {
+      title: "PR Link Building Campaign",
+      description: "Executed PR link-building campaigns, securing high-authority backlinks from publications.",
+      tags: ["SEO", "PR", "Link Building"],
+      imageUrl: "https://placehold.co/600x400/f5f5f5/cccccc?text=PR+Links",
+    },
+    {
+      title: "Programmatic SEO",
+      description: "Leveraging automation and data to scale SEO efforts across large websites.",
+      tags: ["SEO", "Programmatic", "Automation"],
+      imageUrl: "https://placehold.co/600x400/f5f5f5/cccccc?text=Programmatic+SEO",
+    },
+    {
+      title: "Shopify SEO",
+      description: "Optimizing Shopify stores for search engines to drive organic traffic and sales.",
+      tags: ["SEO", "Shopify", "E-commerce"],
+      imageUrl: "https://placehold.co/600x400/f5f5f5/cccccc?text=Shopify+SEO",
+    },
+    {
+      title: "B2B SEO",
+      description: "Developing SEO strategies tailored for B2B companies to attract qualified leads.",
+      tags: ["SEO", "B2B", "Lead Generation"],
+      imageUrl: "https://placehold.co/600x400/f5f5f5/cccccc?text=B2B+SEO",
+    },
+  ];
+
   return (
     <PageTransition>
       {/* Hero Section */}
@@ -415,67 +543,31 @@ const CV = () => {
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              <div className="neo-blur rounded-xl overflow-hidden transition-all duration-300 hover-scale">
-                <div className="h-48 md:h-56 overflow-hidden">
-                  <img 
-                    src="https://placehold.co/600x400/f5f5f5/cccccc?text=E-commerce+SEO" 
-                    alt="E-commerce SEO Optimization" 
-                    className="w-full h-full object-cover transition-transform duration-700 hover:scale-105" 
-                  />
-                </div>
-                <div className="p-6">
-                  <h3 className="text-xl font-semibold mb-2">E-commerce SEO Optimization</h3>
-                  <p className="text-muted-foreground text-sm mb-4">Complete SEO strategy and implementation for a health essentials e-commerce platform.</p>
-                  
-                  <div className="flex flex-wrap gap-2 mb-6">
-                    <span className="text-xs px-2 py-1 rounded-full bg-primary/10 text-primary-foreground">SEO</span>
-                    <span className="text-xs px-2 py-1 rounded-full bg-primary/10 text-primary-foreground">E-commerce</span>
-                    <span className="text-xs px-2 py-1 rounded-full bg-primary/10 text-primary-foreground">Content Strategy</span>
-                  </div>
-                </div>
-              </div>
-
-              <div className="neo-blur rounded-xl overflow-hidden transition-all duration-300 hover-scale">
-                <div className="h-48 md:h-56 overflow-hidden">
-                  <img 
-                    src="https://placehold.co/600x400/f5f5f5/cccccc?text=Casino+SEO" 
-                    alt="Casino Site Ranking System" 
-                    className="w-full h-full object-cover transition-transform duration-700 hover:scale-105" 
-                  />
-                </div>
-                <div className="p-6">
-                  <h3 className="text-xl font-semibold mb-2">Casino Site Ranking System</h3>
-                  <p className="text-muted-foreground text-sm mb-4">Developed a comprehensive ranking system and link building strategy for a gaming platform.</p>
-                  
-                  <div className="flex flex-wrap gap-2 mb-6">
-                    <span className="text-xs px-2 py-1 rounded-full bg-primary/10 text-primary-foreground">SEO</span>
-                    <span className="text-xs px-2 py-1 rounded-full bg-primary/10 text-primary-foreground">Casino</span>
-                    <span className="text-xs px-2 py-1 rounded-full bg-primary/10 text-primary-foreground">Link Building</span>
-                  </div>
-                </div>
-              </div>
-
-              <div className="neo-blur rounded-xl overflow-hidden transition-all duration-300 hover-scale">
-                <div className="h-48 md:h-56 overflow-hidden">
-                  <img 
-                    src="https://placehold.co/600x400/f5f5f5/cccccc?text=CBD+SEO" 
-                    alt="CBD Product Platform" 
-                    className="w-full h-full object-cover transition-transform duration-700 hover:scale-105" 
-                  />
-                </div>
-                <div className="p-6">
-                  <h3 className="text-xl font-semibold mb-2">CBD Product Platform</h3>
-                  <p className="text-muted-foreground text-sm mb-4">Technical SEO and content optimization for a CBD product company.</p>
-                  
-                  <div className="flex flex-wrap gap-2 mb-6">
-                    <span className="text-xs px-2 py-1 rounded-full bg-primary/10 text-primary-foreground">SEO</span>
-                    <span className="text-xs px-2 py-1 rounded-full bg-primary/10 text-primary-foreground">CBD</span>
-                    <span className="text-xs px-2 py-1 rounded-full bg-primary/10 text-primary-foreground">Technical SEO</span>
-                  </div>
-                </div>
-              </div>
-            </div>
+            {/* Replaced grid with Carousel */}
+            <Carousel
+              plugins={[plugin.current]}
+              className="w-full"
+              onMouseEnter={plugin.current.stop}
+              onMouseLeave={plugin.current.reset}
+              opts={{
+                align: "start",
+                loop: true, // Enable looping
+              }}
+            >
+              <CarouselContent className="-ml-4">
+                {projects.map((project, index) => (
+                  // Added responsive basis classes and padding
+                  <CarouselItem key={index} className="pl-4 basis-full md:basis-1/2 lg:basis-1/3">
+                    <div className="p-1 h-full"> {/* Added h-full for consistent item height */}
+                      <ProjectCard {...project} />
+                    </div>
+                  </CarouselItem>
+                ))}
+              </CarouselContent>
+              {/* Added Previous/Next buttons, hidden on small screens */}
+              <CarouselPrevious className="absolute left-[-50px] top-1/2 -translate-y-1/2 hidden md:inline-flex" />
+              <CarouselNext className="absolute right-[-50px] top-1/2 -translate-y-1/2 hidden md:inline-flex" />
+            </Carousel>
           </div>
         </div>
       </section>
