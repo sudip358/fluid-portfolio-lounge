@@ -5,7 +5,7 @@ import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Download, Mail, Phone, MapPin, Linkedin, Send, ArrowRight, ExternalLink, Github } from "lucide-react"; // Ignoring errors for this import as requested
-import React from "react"; // Import React for useRef
+import React, { useState, useRef } from "react"; // Import useState and useRef
 import Autoplay from "embla-carousel-autoplay";
 import {
   Carousel,
@@ -14,6 +14,17 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel"; // Assuming this path is correct
+import {
+  AlertDialog,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogCancel, // Use Cancel for a simple close action
+} from "@/components/ui/alert-dialog"; // Import AlertDialog components
+import emailjs from '@emailjs/browser';
+import { toast } from "sonner"; // Import toast for feedback
 
 // Define ProjectCard component locally within CV.tsx
 const ProjectCard = ({
@@ -72,6 +83,49 @@ const ProjectCard = ({
 
 
 const CV = () => {
+  // EmailJS Form State & Handler
+  const form = useRef<HTMLFormElement>(null);
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [subject, setSubject] = useState('');
+  const [message, setMessage] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [showSuccessDialog, setShowSuccessDialog] = useState(false); // State for success dialog
+
+  const sendEmail = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault(); // Prevent default page reload
+    setIsSubmitting(true);
+
+    if (!form.current) {
+      toast.error("Form reference not found. Please try again.");
+      setIsSubmitting(false);
+      return;
+    }
+
+    // Use your EmailJS credentials here
+    const serviceID = 'service_yocc99m';
+    const templateID = 'template_by403bc';
+    const publicKey = 'e3b2niNHadD7KIOc-';
+
+    emailjs.sendForm(serviceID, templateID, form.current, publicKey)
+      .then((result) => {
+          console.log('EmailJS Success:', result.text);
+          // toast.success("Message sent successfully!"); // Remove toast
+          setShowSuccessDialog(true); // Show the success dialog instead
+          // Clear form fields
+          setName('');
+          setEmail('');
+          setSubject('');
+          setMessage('');
+      }, (error) => {
+          console.error('EmailJS Error:', error.text);
+          toast.error("Failed to send message. Please try again later.");
+      })
+      .finally(() => {
+        setIsSubmitting(false);
+      });
+  };
+
   // Initialize Autoplay plugin
   const plugin = React.useRef(
     Autoplay({ delay: 1500, stopOnInteraction: true })
@@ -611,27 +665,27 @@ const CV = () => {
 
               <div className="col-span-2">
                 <Card className="p-6">
-                  <form className="space-y-4">
+                  <form ref={form} onSubmit={sendEmail} className="space-y-4">
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                       <div className="space-y-2">
                         <label htmlFor="name" className="text-sm font-medium">Name</label>
-                        <Input id="name" placeholder="Your name" />
+                        <Input id="name" name="name" placeholder="Your name" value={name} onChange={(e) => setName(e.target.value)} required />
                       </div>
                       <div className="space-y-2">
                         <label htmlFor="email" className="text-sm font-medium">Email</label>
-                        <Input id="email" type="email" placeholder="Your email" />
+                        <Input id="email" name="email" type="email" placeholder="Your email" value={email} onChange={(e) => setEmail(e.target.value)} required />
                       </div>
                     </div>
                     <div className="space-y-2">
                       <label htmlFor="subject" className="text-sm font-medium">Subject</label>
-                      <Input id="subject" placeholder="How can I help you?" />
+                      <Input id="subject" name="subject" placeholder="How can I help you?" value={subject} onChange={(e) => setSubject(e.target.value)} required />
                     </div>
                     <div className="space-y-2">
                       <label htmlFor="message" className="text-sm font-medium">Message</label>
-                      <Textarea id="message" rows={5} placeholder="Your message..." />
+                      <Textarea id="message" name="message" rows={5} placeholder="Your message..." value={message} onChange={(e) => setMessage(e.target.value)} required />
                     </div>
-                    <Button type="submit" className="w-full md:w-auto flex items-center gap-2">
-                      Send Message <Send className="h-4 w-4" />
+                    <Button type="submit" disabled={isSubmitting} className="w-full md:w-auto flex items-center gap-2">
+                      {isSubmitting ? 'Sending...' : 'Send Message'} <Send className="h-4 w-4" />
                     </Button>
                   </form>
                 </Card>
@@ -640,6 +694,20 @@ const CV = () => {
           </div>
         </div>
       </section>
+      {/* Success Dialog */}
+      <AlertDialog open={showSuccessDialog} onOpenChange={setShowSuccessDialog}>
+        <AlertDialogContent>
+          <AlertDialogHeader>
+            <AlertDialogTitle>Message Sent!</AlertDialogTitle>
+            <AlertDialogDescription>
+              Congrats! Your message has been sent successfully. Our team is now on it like a ninja! They'll reach out to you soon. Until then, put your feet up, relax, and maybe grab a snack – you’ve earned it!
+            </AlertDialogDescription>
+          </AlertDialogHeader>
+          <AlertDialogFooter>
+            <AlertDialogCancel>Close</AlertDialogCancel>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
     </PageTransition>
   );
 };
