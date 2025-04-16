@@ -1,7 +1,16 @@
 
 import { PageTransition } from "@/components/PageTransition";
 import { Button } from "@/components/ui/button";
-import { ExternalLink, Github } from "lucide-react";
+import { ExternalLink, Github } from "lucide-react"; // Ignoring errors for this import as requested
+import React from "react"; // Import React for useRef
+import Autoplay from "embla-carousel-autoplay";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel"; // Assuming this path is correct based on project structure
 
 const ProjectCard = ({ 
   title, 
@@ -12,7 +21,8 @@ const ProjectCard = ({
   githubUrl = "#" 
 }) => {
   return (
-    <div className="neo-blur rounded-xl overflow-hidden transition-all duration-300 hover-scale">
+    // Added h-full for consistent height within carousel item
+    <div className="neo-blur rounded-xl overflow-hidden transition-all duration-300 hover-scale h-full flex flex-col">
       <div className="h-48 md:h-56 overflow-hidden">
         <img 
           src={imageUrl} 
@@ -20,7 +30,8 @@ const ProjectCard = ({
           className="w-full h-full object-cover transition-transform duration-700 hover:scale-105" 
         />
       </div>
-      <div className="p-6">
+      {/* Added flex-grow to push buttons to the bottom */}
+      <div className="p-6 flex flex-col flex-grow">
         <h3 className="text-xl font-semibold mb-2">{title}</h3>
         <p className="text-muted-foreground text-sm mb-4">{description}</p>
         
@@ -35,7 +46,8 @@ const ProjectCard = ({
           ))}
         </div>
         
-        <div className="flex gap-3">
+        {/* Added mt-auto to push buttons down */}
+        <div className="flex gap-3 mt-auto">
           <Button size="sm" variant="outline" asChild>
             <a href={liveUrl} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1">
               <ExternalLink className="h-3.5 w-3.5" />
@@ -55,6 +67,10 @@ const ProjectCard = ({
 };
 
 const Projects = () => {
+  const plugin = React.useRef(
+    Autoplay({ delay: 1500, stopOnInteraction: true })
+  );
+
   const projects = [
     {
       title: "E-commerce SEO Optimization",
@@ -123,11 +139,28 @@ const Projects = () => {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {projects.map((project, index) => (
-              <ProjectCard key={index} {...project} />
-            ))}
-          </div>
+          <Carousel
+            plugins={[plugin.current]}
+            className="w-full"
+            onMouseEnter={plugin.current.stop}
+            onMouseLeave={plugin.current.reset}
+            opts={{
+              align: "start",
+              loop: true,
+            }}
+          >
+            <CarouselContent className="-ml-4">
+              {projects.map((project, index) => (
+                <CarouselItem key={index} className="pl-4 basis-full md:basis-1/2 lg:basis-1/3">
+                  <div className="p-1 h-full"> {/* Added h-full */}
+                    <ProjectCard {...project} />
+                  </div>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+            <CarouselPrevious className="absolute left-[-50px] top-1/2 -translate-y-1/2 hidden md:inline-flex" />
+            <CarouselNext className="absolute right-[-50px] top-1/2 -translate-y-1/2 hidden md:inline-flex" />
+          </Carousel>
         </div>
       </div>
     </PageTransition>
