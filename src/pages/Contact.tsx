@@ -37,7 +37,7 @@ const Contact = () => {
                     </div>
                     <div className="flex items-center space-x-3">
                       <Linkedin className="h-5 w-5 text-primary" />
-                      <a href="https://linkedin.com/in/sudipkumar" className="hover:underline">linkedin.com/in/sudipkumar</a>
+                      <a href="https://www.linkedin.com/in/sudiip-kumr/" className="hover:underline">linkedin.com/in/sudiip-kumr</a>
                     </div>
                   </div>
                 </Card>
