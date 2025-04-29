@@ -46,21 +46,6 @@ const ProjectCard = ({
           ))}
         </div>
         
-        {/* Added mt-auto to push buttons down */}
-        <div className="flex gap-3 mt-auto">
-          <Button size="sm" variant="outline" asChild>
-            <a href={liveUrl} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1">
-              <ExternalLink className="h-3.5 w-3.5" />
-              Live Demo
-            </a>
-          </Button>
-          <Button size="sm" variant="outline" asChild>
-            <a href={githubUrl} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1">
-              <Github className="h-3.5 w-3.5" />
-              Code
-            </a>
-          </Button>
-        </div>
       </div>
     </div>
   );
