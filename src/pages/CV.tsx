@@ -33,7 +33,8 @@ const ProjectCard = ({
   tags,
   imageUrl = "https://placehold.co/600x400/f5f5f5/cccccc",
   liveUrl = "#",
-  githubUrl = "#"
+  githubUrl = "#",
+  caseStudyUrl = "#"
 }) => {
   return (
     // Added h-full for consistent height within carousel item
@@ -60,7 +61,31 @@ const ProjectCard = ({
             </span>
           ))}
         </div>
-
+        
+        {/* Adding View Case Study button */}
+        <div className="mt-auto flex flex-wrap gap-2">
+          {liveUrl !== "#" && (
+            <a
+              href={liveUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground transition-colors"
+            >
+              <ExternalLink className="h-4 w-4" />
+              <span>Live Demo</span>
+            </a>
+          )}
+          
+          <a
+            href={caseStudyUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1 text-sm font-medium bg-primary text-primary-foreground hover:bg-primary/90 px-3 py-1.5 rounded-md transition-colors"
+          >
+            <ExternalLink className="h-4 w-4 mr-1" />
+            View Case Study
+          </a>
+        </div>
       </div>
     </div>
   );
@@ -122,55 +147,64 @@ const CV = () => {
       title: "E-commerce SEO Optimization",
       description: "Complete SEO strategy and implementation for a health essentials e-commerce platform.",
       tags: ["SEO", "E-commerce", "Content Strategy"],
-      imageUrl: "https://placehold.co/600x400/f5f5f5/cccccc?text=E-commerce+SEO",
+      imageUrl: "https://placehold.co/600x400/f5f5f5/000000?text=E-commerce+SEO",
+      caseStudyUrl: "http://localhost:8080/case-study/e-commerce-seo"
     },
     {
       title: "Casino Site Ranking System",
       description: "Developed a comprehensive ranking system and link building strategy for a gaming platform.",
       tags: ["SEO", "Casino", "Link Building"],
-      imageUrl: "https://placehold.co/600x400/f5f5f5/cccccc?text=Casino+SEO",
+      imageUrl: "https://placehold.co/600x400/f5f5f5/000000?text=Casino+SEO",
+      caseStudyUrl: "http://localhost:8080/case-study/casino-ranking"
     },
     {
       title: "CBD Product Platform",
       description: "Technical SEO and content optimization for a CBD product company.",
       tags: ["SEO", "CBD", "Technical SEO"],
-      imageUrl: "https://placehold.co/600x400/f5f5f5/cccccc?text=CBD+SEO",
+      imageUrl: "https://placehold.co/600x400/f5f5f5/000000?text=CBD+SEO",
+      caseStudyUrl: "http://localhost:8080/case-study/cbd-platform"
     },
     {
       title: "Essential Oils Website",
       description: "Complete SEO audit and strategy implementation for an essential oils company.",
       tags: ["SEO", "Health", "Content Marketing"],
-      imageUrl: "https://placehold.co/600x400/f5f5f5/cccccc?text=Essential+Oils",
+      imageUrl: "https://placehold.co/600x400/f5f5f5/000000?text=Essential+Oils",
+      caseStudyUrl: "http://localhost:8080/case-study/essential-oils"
     },
     {
       title: "Mental Health Platform",
       description: "SEO and content strategy for a mental health resources website.",
       tags: ["SEO", "Mental Health", "Content"],
-      imageUrl: "https://placehold.co/600x400/f5f5f5/cccccc?text=Mental+Health",
+      imageUrl: "https://placehold.co/600x400/f5f5f5/000000?text=Mental+Health",
+      caseStudyUrl: "http://localhost:8080/case-study/mental-health"
     },
     {
       title: "PR Link Building Campaign",
       description: "Executed PR link-building campaigns, securing high-authority backlinks from publications.",
       tags: ["SEO", "PR", "Link Building"],
-      imageUrl: "https://placehold.co/600x400/f5f5f5/cccccc?text=PR+Links",
+      imageUrl: "https://placehold.co/600x400/f5f5f5/000000?text=PR+Links",
+      caseStudyUrl: "http://localhost:8080/case-study/pr-link-building"
     },
     {
       title: "Programmatic SEO",
       description: "Leveraging automation and data to scale SEO efforts across large websites.",
       tags: ["SEO", "Programmatic", "Automation"],
-      imageUrl: "https://placehold.co/600x400/f5f5f5/cccccc?text=Programmatic+SEO",
+      imageUrl: "https://placehold.co/600x400/f5f5f5/000000?text=Programmatic+SEO",
+      caseStudyUrl: "http://localhost:8080/case-study/programmatic-seo"
     },
     {
       title: "Shopify SEO",
       description: "Optimizing Shopify stores for search engines to drive organic traffic and sales.",
       tags: ["SEO", "Shopify", "E-commerce"],
-      imageUrl: "https://placehold.co/600x400/f5f5f5/cccccc?text=Shopify+SEO",
+      imageUrl: "https://placehold.co/600x400/f5f5f5/000000?text=Shopify+SEO",
+      caseStudyUrl: "http://localhost:8080/case-study/shopify-seo"
     },
     {
       title: "B2B SEO",
       description: "Developing SEO strategies tailored for B2B companies to attract qualified leads.",
       tags: ["SEO", "B2B", "Lead Generation"],
-      imageUrl: "https://placehold.co/600x400/f5f5f5/cccccc?text=B2B+SEO",
+      imageUrl: "https://placehold.co/600x400/f5f5f5/000000?text=B2B+SEO",
+      caseStudyUrl: "http://localhost:8080/case-study/b2b-seo"
     },
   ];
 

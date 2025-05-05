@@ -1,12 +1,15 @@
 
 import { useState } from "react";
 import { HashLink } from "react-router-hash-link";
+import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import { Menu, X } from "lucide-react";
 
 export function CustomNavbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const location = useLocation();
+  const isHomePage = location.pathname === "/";
   
   const sections = [
     { href: '#about', label: 'About' },
@@ -23,17 +26,17 @@ export function CustomNavbar() {
     <header className="sticky top-0 z-40 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container flex h-16 items-center justify-between">
         <div className="flex gap-6 md:gap-10">
-          <HashLink to="#top" className="flex items-center space-x-2 font-bold">
+          <Link to="/" className="flex items-center space-x-2 font-bold">
             <span>Sudip Kumar</span>
-          </HashLink>
+          </Link>
           
           <nav className="hidden md:flex gap-6">
             {sections.map((section) => (
               <HashLink
                 key={section.href}
-                to={section.href}
+                to={isHomePage ? section.href : `/${section.href}`}
                 className="text-sm font-medium transition-colors hover:text-primary text-muted-foreground"
-                smooth
+                smooth={isHomePage}
               >
                 {section.label}
               </HashLink>
@@ -65,10 +68,10 @@ export function CustomNavbar() {
             {sections.map((section) => (
               <HashLink
                 key={section.href}
-                to={section.href}
+                to={isHomePage ? section.href : `/${section.href}`}
                 className="text-sm font-medium transition-colors hover:text-primary text-muted-foreground"
                 onClick={() => setIsMenuOpen(false)}
-                smooth
+                smooth={isHomePage}
               >
                 {section.label}
               </HashLink>
