@@ -1,4 +1,3 @@
-
 import { PageTransition } from "@/components/PageTransition";
 import { Button } from "@/components/ui/button";
 import { ExternalLink, Github } from "lucide-react"; // Ignoring errors for this import as requested
@@ -103,7 +102,7 @@ const Projects = () => {
       tags: ["SEO", "E-commerce", "Content Strategy"],
       imageUrl: "https://placehold.co/600x400/f5f5f5/cccccc?text=E-commerce+SEO",
       liveUrl: "https://example.com/health-essentials",
-      caseStudyUrl: "http://localhost:8080/case-study/e-commerce-seo"
+      caseStudyUrl: "/case-study/e-commerce-seo"
     },
     {
       id: "casino-ranking",
@@ -112,7 +111,7 @@ const Projects = () => {
       tags: ["SEO", "Casino", "Link Building"],
       imageUrl: "https://placehold.co/600x400/f5f5f5/cccccc?text=Casino+SEO",
       liveUrl: "https://example.com/casino-platform",
-      caseStudyUrl: "http://localhost:8080/case-study/casino-ranking"
+      caseStudyUrl: "/case-study/casino-ranking"
     },
     {
       id: "cbd-platform",
@@ -121,7 +120,7 @@ const Projects = () => {
       tags: ["SEO", "CBD", "Technical SEO"],
       imageUrl: "https://placehold.co/600x400/f5f5f5/cccccc?text=CBD+SEO",
       liveUrl: "https://example.com/cbd-products",
-      caseStudyUrl: "http://localhost:8080/case-study/cbd-platform"
+      caseStudyUrl: "/case-study/cbd-platform"
     },
     {
       id: "essential-oils",
@@ -130,7 +129,7 @@ const Projects = () => {
       tags: ["SEO", "Health", "Content Marketing"],
       imageUrl: "https://placehold.co/600x400/f5f5f5/cccccc?text=Essential+Oils",
       liveUrl: "https://example.com/essential-oils",
-      caseStudyUrl: "http://localhost:8080/case-study/essential-oils"
+      caseStudyUrl: "/case-study/essential-oils"
     },
     {
       id: "mental-health",
@@ -139,7 +138,7 @@ const Projects = () => {
       tags: ["SEO", "Mental Health", "Content"],
       imageUrl: "https://placehold.co/600x400/f5f5f5/cccccc?text=Mental+Health",
       liveUrl: "https://example.com/mental-health",
-      caseStudyUrl: "http://localhost:8080/case-study/mental-health"
+      caseStudyUrl: "/case-study/mental-health"
     },
     {
       id: "pr-link-building",
@@ -148,7 +147,7 @@ const Projects = () => {
       tags: ["SEO", "PR", "Link Building"],
       imageUrl: "https://placehold.co/600x400/f5f5f5/cccccc?text=PR+Links",
       liveUrl: "https://example.com/fintech-startup",
-      caseStudyUrl: "http://localhost:8080/case-study/pr-link-building"
+      caseStudyUrl: "/case-study/pr-link-building"
     },
     {
       id: "programmatic-seo",
@@ -157,7 +156,7 @@ const Projects = () => {
       tags: ["SEO", "Programmatic", "Automation"],
       imageUrl: "https://placehold.co/600x400/f5f5f5/cccccc?text=Programmatic+SEO",
       liveUrl: "https://example.com/programmatic-seo",
-      caseStudyUrl: "http://localhost:8080/case-study/programmatic-seo"
+      caseStudyUrl: "/case-study/programmatic-seo"
     },
     {
       id: "shopify-seo",
@@ -166,7 +165,7 @@ const Projects = () => {
       tags: ["SEO", "Shopify", "E-commerce"],
       imageUrl: "https://placehold.co/600x400/f5f5f5/cccccc?text=Shopify+SEO",
       liveUrl: "https://example.com/shopify-store",
-      caseStudyUrl: "http://localhost:8080/case-study/shopify-seo"
+      caseStudyUrl: "/case-study/shopify-seo"
     },
     {
       id: "b2b-seo",
@@ -175,7 +174,7 @@ const Projects = () => {
       tags: ["SEO", "B2B", "Lead Generation"],
       imageUrl: "https://placehold.co/600x400/f5f5f5/cccccc?text=B2B+SEO",
       liveUrl: "https://example.com/b2b-company",
-      caseStudyUrl: "http://localhost:8080/case-study/b2b-seo"
+      caseStudyUrl: "/case-study/b2b-seo"
     },
   ];
 
