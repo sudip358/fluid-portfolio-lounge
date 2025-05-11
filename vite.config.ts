@@ -20,5 +20,5 @@ export default defineConfig(({ mode }) => ({
       "@": path.resolve(__dirname, "./src"),
     },
   },
-  base: "./", // This is the important addition for GitHub Pages
+  base: "/", // Changed from "./" to "/" for Netlify deployment
 }));

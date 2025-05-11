@@ -1,0 +1,10 @@
+# This file tells Netlify how to handle routing for single page applications
+[build]
+  publish = "dist"
+  command = "npm run build"
+
+# The following redirect is necessary for SPAs using client-side routing
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
