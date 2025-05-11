@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { ExternalLink, Github } from "lucide-react"; // Ignoring errors for this import as requested
 import React from "react"; // Import React for useRef
 import Autoplay from "embla-carousel-autoplay";
+import { Link } from "react-router-dom";
 import {
   Carousel,
   CarouselContent,
@@ -74,15 +75,13 @@ const ProjectCard = ({
           )}
           
           {/* Always show Case Study button with direct URL */}
-          <a
-            href={caseStudyUrl}
-            target="_blank"
-            rel="noopener noreferrer"
+          <Link
+            to={caseStudyUrl}
             className="inline-flex items-center gap-1 text-sm font-medium bg-primary text-primary-foreground hover:bg-primary/90 px-3 py-1.5 rounded-md transition-colors"
           >
             <ExternalLink className="h-4 w-4 mr-1" />
             View Case Study
-          </a>
+          </Link>
         </div>
       </div>
     </div>
